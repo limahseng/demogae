@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8" />
+		<title>Profile</title>
+		<link rel="stylesheet" href="/static/css/main.css" />
+	</head>
+	<body>
+		<h4 id="greetline">{{ greeting }} <a href="{{ url }}">{{ url_linktext }}</a></h4>
+		
+		<div id="content">
+		{% if person %}
+			<form action="/update" method="post">
+				<fieldset>
+				    <legend><h1>{{ person.name }}</h1></legend>
+					<h3>Email: {{ person.email }}</h3>
+					<br />
+					<input type="hidden" id="remarkval" value="{{ person.remark }}" />
+					<label for="remark">Remark:</label>
+					<textarea id="remark" name="remark" cols="50" rows="2">{{ person.remark|escape }}</textarea><br /><br />
+					<input type="submit" id="update" name="update" value="Update">
+				</fieldset>
+			</form>	
+		{% else %}
+			<!-- Logged in but unauthorized user  -->
+		    <section id="unauthorized">
+				<img src="/static/images/happy.jpg" title="Happy fruit" alt="Happy fruit" />  
+			</section>
+		{% endif %}
+		
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/static/js/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/static/js/jquery-migrate-1.1.0.min.js"><\/script>')</script>		
+        <script src="/static/js/main.js"></script>
+	</body>
+</html>
