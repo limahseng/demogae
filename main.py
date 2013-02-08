@@ -59,7 +59,7 @@ class MainHandler(webapp2.RequestHandler):
 			template = jinja_environment.get_template('index.html')
 		else:
 			template = jinja_environment.get_template('404.html')
-		self.response.out.write(template.render(template_values))
+		self.response.write(template.render(template_values))
 
 		
 class UpdateHandler(webapp2.RequestHandler):
@@ -81,7 +81,7 @@ class UpdateHandler(webapp2.RequestHandler):
 
 
 # main
-#p1 = Person(pid=users.get_current_user().nickname(), name="LIM AH SENG", email=users.get_current_user().email(), remark="cute little boy")
+#p1 = Person(pid="gi.soongchee", name="GI SOONG CHEE", email=users.get_current_user().email(), remark="healthy man")
 #p1.put()
 
 app = webapp2.WSGIApplication([('/', MainHandler), ('/update', UpdateHandler)], debug=True)
